@@ -1,0 +1,18 @@
+rescript = 1
+g_finger := E:\repository\local_projects\react_frontend\_project_testing\vite-rescript-react\node_modules\@rescript\react\lib\ocaml\install.stamp
+g_finger := E:\repository\local_projects\react_frontend\_project_testing\vite-rescript-react\node_modules\@ryyppy\rescript-promise\lib\ocaml\install.stamp
+rule astj
+  command = "E:\repository\local_projects\react_frontend\_project_testing\vite-rescript-react\node_modules\rescript\win32\bsc.exe"  -warn-error +101 -bs-v 9.1.4 -bs-jsx 3  -absname -bs-ast -o $out $i
+o src\App.ast : astj ..\..\src\App.res
+rule deps
+  command = "E:\repository\local_projects\react_frontend\_project_testing\vite-rescript-react\node_modules\rescript\win32\bsb_helper.exe" -hash 794e96ee1946a32950bfac8a97dbf62f $in
+  restat = 1
+o src\App.d : deps src\App.ast
+rule mij
+  command = "E:\repository\local_projects\react_frontend\_project_testing\vite-rescript-react\node_modules\rescript\win32\bsc.exe" -I src -I "E:\repository\local_projects\react_frontend\_project_testing\vite-rescript-react\node_modules\@rescript\react\lib\ocaml" -I "E:\repository\local_projects\react_frontend\_project_testing\vite-rescript-react\node_modules\@ryyppy\rescript-promise\lib\ocaml"   -warn-error +101 -bs-package-name hello-rescript -bs-package-output es6:$in_d:.bs.js -bs-v $g_finger $i
+  dyndep = 1
+  restat = 1
+o src\App.cmj src\App.cmi ..\..\src\App.bs.js : mij src\App.ast
+o src\Main.ast : astj ..\..\src\Main.res
+o src\Main.d : deps src\Main.ast
+o src\Main.cmj src\Main.cmi ..\..\src\Main.bs.js : mij src\Main.ast
