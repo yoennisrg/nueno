@@ -22,7 +22,7 @@ function App(Props) {
                       className: "App-logo",
                       alt: "logo",
                       src: logo
-                    }), React.createElement("p", undefined, "Hello Vite + React !!!"), React.createElement("p", undefined, React.createElement("button", {
+                    }), React.createElement("p", undefined, "Hello Vite + Rescript + React !!!"), React.createElement("p", undefined, React.createElement("button", {
                           onClick: (function (_e) {
                               return Curry._1(setCount, (function (count) {
                                             return count + 1 | 0;
